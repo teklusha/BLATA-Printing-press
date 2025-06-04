@@ -3,45 +3,70 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#004080" />
   <title>BLATA Printing Press</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
   <style>
-    html, body {
-      max-width: 100%;
-      overflow-x: hidden;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
       font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-      background: #f9f9f9;
+      background: linear-gradient(to right, #f2f2f2, #e0f7fa);
       color: #333;
-      transition: background 0.3s, color 0.3s;
+      line-height: 2;
+      position: relative;
     }
 
     header, footer {
-      background: linear-gradient(to right, #004080, #0074d9);
+      background: #004080;
       color: white;
       text-align: center;
       padding: 1em 0;
+      position: relative;
+    }
+
+    .developer-info {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.8em;
+    }
+
+    .developer-info img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-right: 8px;
+      object-fit: cover;
+      border: 1px solid white;
+    }
+
+    .nav-toggle {
+      display: none;
+      font-size: 30px;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      cursor: pointer;
     }
 
     nav {
-      position: sticky;
-      top: 0;
       background-color: #004080;
-      z-index: 999;
     }
 
     nav ul {
       display: flex;
       justify-content: center;
       list-style: none;
-      padding: 0;
-      margin: 0;
+      flex-wrap: wrap;
     }
 
     nav ul li {
@@ -54,25 +79,30 @@
       font-weight: bold;
     }
 
-    .dark nav ul li a {
-      color: #f0f0f0;
+    .hero {
+      background: linear-gradient(to right, #ff4081, #ffeb3b);
+      color: #222;
+      text-align: center;
+      padding: 60px 20px;
     }
 
-    .toggle-mode {
-      margin: 1em 0;
+    .hero h2 {
+      font-size: 2.8em;
+      margin-bottom: 10px;
     }
 
     section {
-      padding: 2em;
+      padding: 2em 20px;
+      max-width: 1000px;
+      margin: auto;
     }
 
     .services, .contact, .order-form {
       background: white;
-      margin: 1em auto;
       padding: 1.5em;
-      max-width: 800px;
+      margin: 1em auto;
       border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
     .service-grid {
@@ -83,18 +113,19 @@
     }
 
     .service-card {
-      padding: 1em;
       background: #f0f8ff;
+      padding: 1em;
       border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
 
-    label, input, select, textarea {
+    form label, form input, form textarea, form select {
       display: block;
       width: 100%;
       margin-bottom: 1em;
     }
 
-    input, select, textarea {
+    input, textarea, select {
       padding: 0.5em;
       border: 1px solid #ccc;
       border-radius: 5px;
@@ -118,16 +149,28 @@
       color: #f0f0f0;
     }
 
-    .dark .services,
-    .dark .order-form,
-    .dark .contact {
+    .dark .services, .dark .order-form, .dark .contact {
       background-color: #1e1e1e;
-      color: #f0f0f0;
     }
 
     @media (max-width: 768px) {
+      .nav-toggle {
+        display: block;
+      }
+
       nav ul {
         flex-direction: column;
+        display: none;
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      .developer-info {
+        top: 60px;
+        right: 10px;
+        font-size: 0.7em;
       }
     }
   </style>
@@ -135,17 +178,31 @@
 <body>
   <header>
     <h1>BLATA Printing Press</h1>
+    <div class="nav-toggle" id="navToggle">&#9776;</div>
     <nav>
-      <ul>
+      <ul id="navMenu">
+        <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#order">Order Online</a></li>
+        <li><a href="#order">Order</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
-    <div class="toggle-mode">
-      <button onclick="toggleDarkMode()">🌓 Toggle Dark Mode</button>
+    <div class="developer-info">
+      <img src="https://github.com/teklusha/BLATA-Printing-press/blob/main/my1.png?raw=true" alt="Developer Photo">
+      <span>Dev: <a href="@teklehabesha7">Teklush@MIT</a></span>
     </div>
   </header>
+
+  <section class="hero">
+    <h2>Reliable. Respected. Renowned.</h2>
+    <p>Serving Mekelle and beyond with high-quality, professional printing solutions.</p>
+    <button onclick="toggleDarkMode()">🌓 Toggle Dark Mode</button>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>BLATA Printing Press is one of the most trusted printing services in Mekelle. We are known for our premium quality, wide variety of services, and loyal customer base across regions. From offset to digital, from business to personal—we bring your ideas to life in print.</p>
+  </section>
 
   <section class="services" id="services">
     <h2>Our Services</h2>
@@ -163,35 +220,41 @@
 
   <section class="order-form" id="order">
     <h2>Place Your Order</h2>
-    <form action="https://formspree.io/f/xnnvaeqb" method="POST" enctype="multipart/form-data">
-      <label for="name">Your Name</label>
+    <form>
+      <label for="name">Your Full Name</label>
       <input type="text" id="name" name="name" required />
 
-      <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" name="phone" placeholder="09XXXXXXXX" required />
+      <label for="phone">Your Phone Number </label>
+      <input type="tel" id="phone" name="phone" pattern="09[0-9]{8}" required placeholder="e.g., 09xxxxxxxx" />
 
-      <label for="service">Select Service</label>
-      <select id="service" name="service" required>
-        <option value="">-- Choose a Service --</option>
-        <option value="business-cards">Business Cards</option>
-        <option value="banners">Banners</option>
-        <option value="flyers">Flyers</option>
-        <option value="books">Books</option>
-        <option value="receipts">Receipts</option>
+      <label for="item">Type of Item</label>
+      <select id="item" name="item" required>
+        <option value="">-- Select --</option>
+        <option value="banner">Banner</option>
+        <option value="receipt">Receipts</option>
+        <option value="card">Cards</option>
+        <option value="book">Books</option>
+        <option value="tshirt">T-Shirts</option>
         <option value="other">Other</option>
       </select>
 
-      <label for="details">Order Details</label>
-      <textarea id="details" name="details" rows="5" placeholder="Write order details here..." required></textarea>
+      <label for="description">Item Description</label>
+      <textarea id="description" name="description" rows="3" placeholder="Describe design, size, colors, etc."></textarea>
 
-      <label for="file">Upload File (if needed)</label>
-      <input type="file" id="file" name="file" />
+      <label for="quantity">Number of Items</label>
+      <input type="number" id="quantity" name="quantity" required min="1" />
 
       <label for="address">Delivery Address</label>
-      <input type="text" id="address" name="address" required />
+      <textarea id="address" name="address" rows="3" required></textarea>
 
-      <label for="wait-days">Maximum Days You Can Wait</label>
-      <input type="number" id="wait-days" name="wait-days" min="1" max="30" placeholder="e.g. 3" required />
+      <label for="days">Maximum Waiting Days</label>
+      <input type="number" id="days" name="days" min="1" max="30" required placeholder="e.g., 2" />
+
+      <label for="file">Upload File (optional)</label>
+      <input type="file" id="file" name="file" />
+
+      <label for="notes">Additional Notes (optional)</label>
+      <textarea id="notes" name="notes" rows="3"></textarea>
 
       <button type="submit">Submit Order</button>
     </form>
@@ -199,12 +262,10 @@
 
   <section class="contact" id="contact">
     <h2>Contact Us</h2>
-    <p><strong>Address:</strong> Mekele City, Zone 17, Block 4, in front of the Tigray Education Bureau</p>
-    <p><strong>Manager:</strong> +251914106121</p>
-    <p><strong>Business Cards Orders - Aberae:</strong> 266523263260</p>
-    <p><strong>Banners - Kasae:</strong> 0322548755</p>
-    <p><strong>Flyers/Books/Receipts - Selam:</strong> 0912123456</p>
-    <p><a href="https://www.google.com/maps?q=Mekele" target="_blank" rel="noopener">View on Google Maps</a></p>
+    <p><strong>Address:</strong> Mekelle City, Zone 17, Block 4, in front of the Tigray Education Bureau</p>
+    <p><strong>Phone:</strong> +251XXXXXXXXX</p>
+    <p><strong>Email:</strong> your@email.com</p>
+    <iframe src="https://www.google.com/maps?q=Mekele&output=embed" width="100%" height="300" style="border:0;" allowfullscreen loading="lazy"></iframe>
   </section>
 
   <footer>
@@ -212,6 +273,10 @@
   </footer>
 
   <script>
+    document.getElementById('navToggle').addEventListener('click', function() {
+      document.getElementById('navMenu').classList.toggle('active');
+    });
+
     function toggleDarkMode() {
       document.body.classList.toggle("dark");
     }
